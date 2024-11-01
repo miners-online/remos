@@ -1,4 +1,9 @@
 {
+    {
+    label = "Contacts",
+    path = "apps/contacts.lua",
+    iconFile = "icons/contacts.icon",
+  },
   {
     label = "Shell",
     path = "/rom/programs/shell.lua",
