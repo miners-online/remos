@@ -60,9 +60,20 @@ local inbox = list.listWidget(_remos._notifications, 3,
     end)
 rootVbox:addWidget(inbox)
 
-rootVbox:addWidget(input.buttonWidget("Settings", function(self)
+
+
+local bottomHbox = container.hBox()
+bottomHbox:addWidget(input.buttonWidget("Settings", function(self)
     remos.addAppFile("remos/settings.lua")
-end), 3)
+end))
+bottomHbox:addWidget(input.buttonWidget("Clear", function(self)
+    for k in pairs(_remos._notifications) do
+        _remos._notifications[k] = nil
+    end
+    inbox:updateTable()
+    os.queueEvent("remos_notification")
+end))
+rootVbox:addWidget(bottomHbox, 3)
 
 tui.run(rootVbox, nil, function(e)
     if e == "remos_peripheral" then

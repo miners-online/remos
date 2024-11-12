@@ -53,6 +53,9 @@ local files = {
         ["splash.lua"] = fromRepository "remos/splash.lua",
         ["taskmon.lua"] = fromRepository "remos/taskmon.lua",
     },
+    net = {
+        ["init.lua"] = fromRepository "net/init.lua",
+    },
     themes = {
         palettes = {
             ["gnome.pal"] = fromRepository "themes/palettes/gnome.pal",

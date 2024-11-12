@@ -69,8 +69,12 @@ end
 
 local function notificationText()
     local t = ""
-    for i, v in ipairs(_remos._notifications) do
-        t = t .. v.icon
+    if #_remos._notifications > 5 then
+        t = tostring(#_remos._notifications)
+    else
+        for _, v in ipairs(_remos._notifications) do
+            t = t .. v.icon
+        end
     end
     return t
 end
@@ -150,6 +154,7 @@ _remos._setNotificationPid(notificationpid)
 local homepid = assert(remos.addAppFile("remos/home.lua"))
 _remos._setHomePid(homepid)
 
+_remos._addProcess(assert(loadfile("net/init.lua", "t", _ENV)), "NET INIT", nil)
 
 local timer = os.startTimer(1)
 while true do
